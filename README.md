@@ -20,13 +20,19 @@ Não é obrigatório o uso dele. Sinta-se à vontade para fazer do seu jeito.
 - Linter do código
 - Documentação da API (API Bluprint, Swagger, etc)
 
+## Instruções
+
+1. Faça um fork de repositório;
+2. Descreva no `README.md` as instruções para executar o projeto;
+3. Envie por email a URL do fork.
+
 ## Desafio
 
-O desafio foi dividido em 3 partes:
+O desafio é composto por 3 user stories:
 
 ### 1. Obter repositórios remotos e cadastrar no banco de dados local
 
-> Como usuário, eu quero fornecer meu username e obter todos os repositórios que eu curti e salvar no banco de dados.
+> Como usuário, eu quero fornecer meu username e obter todos os repositórios que eu curti e salvar no banco de dados para depois conseguir adicionar minhas tags.
 
 #### Cenário
 
@@ -106,7 +112,7 @@ O usuário acessa o sistema pelo browser, visualiza a lista de repositórios cad
 
 ### 3. Buscar repositórios por tag
 
-> Como usuário, quero poder fornecer uma tag e obter os repositórios que possuem essa tag.
+> Como usuário, quero poder fornecer uma tag e obter os repositórios que possuem essa tag para visualizar na tela o resultado da minha busca.
 
 #### Cenário
 
@@ -118,3 +124,10 @@ O usuário acessa o sistema pelo browser, digita uma tag e clica no botão. O si
 * Utilizar Ajax para obter os repositórios
 * A busca não precisa estar perfeita. Se buscar pela tag `java` e retornar repositório contendo `javascript`, não tem problema.
 
+## Considerações Finais
+
+Entendemos as dificuldades do dia-a-dia para quem trabalha em ter que dedicar um tempo para resolver esse tipo de desafio. Por isso pedimos para que mesmo que você não consiga completar o desafio, nos envie assim mesmo. Não queremos julgar nossos candidatos, queremos apenas entender melhor a maneira como cada um pensa e age diante de um problema comum nesse mercado caótico de tecnologia.  
+
+Qualquer dúvida pode entrar em contato conosco.  
+
+Boa sorte!!!
