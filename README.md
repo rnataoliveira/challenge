@@ -4,10 +4,17 @@ O Github é uma rede social de programadores que possui uma funcionalidade inter
 Rick é um usuário ativo do Github que está sempre buscando novos projetos curtindo os que acha interessantes. Ele gostaria de poder adicionar um label ou tag para marcar o repositório de modo que ele possa filtrar. Por exemplo, ele encontrou um repositório chamado `react` e gostaria de adicionar as tags *javascript* e *frontend*.  
 Como o Github não possui essa funcionalidade, Rick precisa de um sistema que consiga ajudá-lo com isso.
 
-## Esqueleto
+## Tecnologias
 
-Nesse repositório encontra-se um esqueleto do projeto contendo configurações para testes automatizados, cobertura e lint.  
-Não é obrigatório o uso dele. Sinta-se à vontade para fazer do seu jeito.
+Na brainn.co não trabalhamos com uma linguagem ou framework apenas. Somos poliglotas e incentivamos o uso de novas tecnologias desde que o time concorde em conjunto e esteja preparado para assumir os riscos de ter que reimplementar utilizando alguma tecnologia mais tradicional em casos de incidentes.  
+Entretanto, nesse momento, estamos com um time pequeno e por enquanto nossas opções de linguagem são limitadas.  
+Escolha uma das linguagens abaixo para o desafio:
+
+* Python
+* Javascript
+* Golang
+* Java
+* Ruby
 
 ## O que vai ser avaliado?
 
