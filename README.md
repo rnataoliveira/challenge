@@ -19,18 +19,20 @@ Escolha uma das linguagens abaixo para o desafio:
 ## O que vai ser avaliado?
 
 - Código limpo e coeso utilizando os princípios [SOLID](https://www.google.com.br/search?q=principios+solid&oq=principios+solid).
-- API Restful utilizando Django
+- API Restful utilizando Django, API Star, Flask ou Falcon
 - Uso da API do Github
-- Uso o ORM do Django para trabalhar com banco de dados
+- Uso o ORM do Django ou SQLAlchemy para trabalhar com banco de dados
 - Testes automatizados
 - Cobertura de testes
 - Linter do código
-- Documentação da API (API Bluprint, Swagger, etc)
+- Documentação da API utilizando API Blueprint, RAML ou Swagger)
+- Conhecimento em Javascript, HTML e CSS
+- Usabilidade
 
 ## Instruções
 
 1. Faça um fork de repositório;
-2. Descreva no `README.md` as instruções para executar o projeto;
+2. Descreva no `README.md` como configurar o projeto;
 3. Envie por email a URL do fork.
 
 ## Desafio
@@ -133,7 +135,7 @@ O usuário acessa o sistema pelo browser, digita uma tag e clica no botão. O si
 
 ## Considerações Finais
 
-Entendemos as dificuldades do dia-a-dia para quem trabalha em ter que dedicar um tempo para resolver esse tipo de desafio. Por isso pedimos para que mesmo que você não consiga completar o desafio, nos envie assim mesmo. Não queremos julgar nossos candidatos, queremos apenas entender melhor a maneira como cada um pensa e age diante de um problema comum nesse mercado caótico de tecnologia.  
+Entendemos as dificuldades do dia-a-dia para quem trabalha em ter que dedicar um tempo para resolver esse tipo de desafio. Por isso pedimos para que mesmo que você não consiga completar o desafio, nos envie assim mesmo. Não queremos julgar nossos candidatos, queremos apenas entender melhor a maneira como cada um pensa e age diante de um problema comum no mercado.  
 
 Qualquer dúvida pode entrar em contato conosco.  
 
