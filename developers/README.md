@@ -19,21 +19,23 @@ Escolha uma das linguagens abaixo para o desafio:
 ## O que vai ser avaliado?
 
 - Código limpo e coeso utilizando os princípios [SOLID](https://www.google.com.br/search?q=principios+solid&oq=principios+solid).
-- API Restful utilizando Django, API Star, Flask ou Falcon
-- Uso da API do Github
-- Uso o ORM do Django ou SQLAlchemy para trabalhar com banco de dados
+- Simplicidade na implementação da solução
+- API Restful 
 - Testes automatizados
 - Cobertura de testes
-- Linter do código
-- Documentação da API utilizando API Blueprint, RAML ou Swagger)
+- Linter/Análise estática do código
+- Integração Contínua com o travis-ci
+- Uso do ORM ou Queries SQL para trabalhar com banco de dados
+- Documentação da API utilizando API Blueprint, RAML ou Swagger
 - Conhecimento em Javascript, HTML e CSS
-- Usabilidade
+- Conhecimento em algum framework/lib Javascript para SPA
+- Usabilidade e design do frontend
 
 ## Instruções
 
-1. Faça um fork de repositório;
-2. Descreva no `README.md` como configurar o projeto;
-3. Envie por email a URL do fork.
+1. Crie um repositório na sua conta do Github;
+2. Descreva no `README.md` como configurar o projeto (rodar a app, rodar os testes, envvars...);
+3. Envie por email a URL do repositório criado.
 
 ## Desafio
 
@@ -53,57 +55,6 @@ O usuário executa algum comando ou script pelo terminal passando o username com
 * O banco de dados pode ser SQLite3, MySQL ou Postgres.
 * As informações que devem ser salvas no banco de dados são: ID do repositório, nome do repositório, url http e linguagem.
 
-#### Exemplo de Uso
-
-Dado o username gustavohenrique:
-
-**API v3 via shell**
-
-```sh
-curl -slv https://api.github.com/users/gustavohenrique/starred?sort=updated&direction=desc
-```
-
-**API v4 via Python**
-```python
-from gql import gql, Client
-from gql.transport.requests import RequestsHTTPTransport
-
-user = 'gustavohenrique'
-query = ''
-  query {
-  user(login: "%s") {
-      starredRepositories(first: 1) {
-        totalCount
-        edges {
-          node {
-            id
-            name
-            url
-            languages(first: 10) {
-              edges {
-                node {
-                  name
-                }
-              }
-            }
-          }
-          cursor
-        }
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
-          endCursor
-        }
-      }
-  }'' % user
-headers = {'Authorization': 'bearer %s' % os.getenv('GITHUB_API_TOKEN')}
-url = 'https://api.github.com/graphql'
-transport = RequestsHTTPTransport(url, headers=headers, use_json=True)
-client = Client(transport=transport)
-resp = client.execute(gql(query))
-repositories = resp.get('user').get('starredRepositories')
-print(repositories)
-```
 
 ### 2. Adicionar tags para os repositórios
 
@@ -135,7 +86,7 @@ O usuário acessa o sistema pelo browser, digita uma tag e clica no botão. O si
 
 ## Considerações Finais
 
-Entendemos as dificuldades do dia-a-dia para quem trabalha em ter que dedicar um tempo para resolver esse tipo de desafio. Por isso pedimos para que mesmo que você não consiga completar o desafio, nos envie assim mesmo. Não queremos julgar nossos candidatos, queremos apenas entender melhor a maneira como cada um pensa e age diante de um problema comum no mercado.  
+Entendemos as dificuldades do dia-a-dia para quem trabalha em ter que dedicar um tempo para resolver esse tipo de desafio. Por isso pedimos para que mesmo que você não consiga completar o desafio, nos envie assim mesmo. Não queremos julgar nossos candidatos, queremos apenas entender melhor a maneira como cada um pensa e age diante de um problema comum.  
 
 Qualquer dúvida pode entrar em contato conosco.  
 
