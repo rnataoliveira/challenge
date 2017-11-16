@@ -14,7 +14,6 @@ Escolha uma das linguagens abaixo para o desafio:
 * Javascript
 * Golang
 * Java
-* Ruby
 
 ## O que vai ser avaliado?
 
