@@ -15,49 +15,57 @@ Escolha uma das linguagens abaixo para o desafio:
 * Golang
 * Java
 
+E para o front-end:
+
+* React
+* Vue
+
 ## O que vai ser avaliado?
 
-- Código limpo e coeso utilizando os princípios [SOLID](https://www.google.com.br/search?q=principios+solid&oq=principios+solid).
+- Código limpo e coeso utilizando os princípios [S.O.L.I.D](https://www.google.com.br/search?q=principios+solid&oq=principios+solid).
 - Simplicidade na implementação da solução
-- API Restful 
+- Design da API RESTful 
 - Testes automatizados
 - Cobertura de testes
 - Linter/Análise estática do código
-- Integração Contínua com o travis-ci
 - Uso do ORM ou Queries SQL para trabalhar com banco de dados
 - Documentação da API utilizando API Blueprint, RAML ou Swagger
-- Conhecimento em Javascript, HTML e CSS
-- Conhecimento em algum framework/lib Javascript para SPA
-- Usabilidade e design do frontend
-
-## Instruções
-
-1. Crie um repositório na sua conta do Github;
-2. Descreva no `README.md` como configurar o projeto (rodar a app, rodar os testes, envvars...);
-3. Envie por email a URL do repositório criado.
+- Conhecimento em Javascript, HTML5 e CSS3
+- Capacidade de implementar as telas a partir do wireframe
 
 ## Desafio
 
-O desafio é composto por 3 user stories:
+O desafio consiste em desenvolver uma aplicação web que obtém todos os repositórios que um determinado usuário "curtiu" e salvar em um banco de dados local para permitir associar tags (labels ou hashtags) à cada repositório. Atualmente o Github não possui esse recurso e fica difícil classificar projetos open source interessantes. 
+O projeto deve funcionar com o front-end utilizando consultas AJAX para transferir informações ao back-end.
+
+Há 3 user stories para entendimento sobre o que é necessário fazer:
 
 ### 1. Obter repositórios remotos e cadastrar no banco de dados local
 
-> Como usuário, eu quero fornecer meu username e obter todos os repositórios que eu curti e salvar no banco de dados para depois conseguir adicionar minhas tags.
+> Como usuário, eu quero fornecer meu username e salvar no banco de dados local todos os repositórios que eu curti para depois conseguir adicionar minhas tags.
+
+#### Wireframe
+
+![Tela 1](wireframes/01.png?raw=true "Insira o username")
+![Tela 2](wireframes/02.png?raw=true "Loading...")
 
 #### Cenário
 
-O usuário executa algum comando ou script pelo terminal passando o username como parâmetro para que obtenha os repositórios do Github.
+O usuário informa o username na tela para que o sistema obtenha os repositórios do Github.
 
 #### Critérios de Aceitação
 
 * Deve obter os repositórios com star utilizando a API Rest v3 do Github. Utilizar a API v4 com GraphQL é um plus.
-* O banco de dados pode ser SQLite3, MySQL ou Postgres.
-* As informações que devem ser salvas no banco de dados são: ID do repositório, nome do repositório, url http e linguagem.
-
+* As informações que devem ser salvas no banco de dados são: ID do repositório, nome do repositório, descrição, URL HTTP e linguagem.
 
 ### 2. Adicionar tags para os repositórios
 
 > Como usuário, eu quero poder adicionar tags (labels) para cada repositório para eu poder efetuar uma busca por tag.
+
+#### Wireframe
+
+![Tela 3](wireframes/03.png?raw=true "Lista de todos os repositórios")
+![Tela 4](wireframes/04.png?raw=true "Adicionando tag")
 
 #### Cenário
 
@@ -65,23 +73,29 @@ O usuário acessa o sistema pelo browser, visualiza a lista de repositórios cad
 
 #### Critérios de Aceitação
 
-* O campo de tags no banco de dados pode ser um CharField comum, não precisa utilizar campos específicos do MySQL ou Postgres.
 * Um repositório não pode ter tags duplicadas.
-* Pode utilizar o Admin do Django se preferir.
 
 ### 3. Buscar repositórios por tag
 
 > Como usuário, quero poder fornecer uma tag e obter os repositórios que possuem essa tag para visualizar na tela o resultado da minha busca.
 
+#### Wireframe
+
+![Tela 5](wireframes/05.png?raw=true "Busca por tag")
+
 #### Cenário
 
-O usuário acessa o sistema pelo browser, digita uma tag e clica no botão. O sistema exibe todos os repositórios que tenham a tag definida.
+O usuário acessa o sistema, digita uma tag e aperta a tecla <Enter>. O sistema exibe todos os repositórios que tenham a tag definida.
 
 #### Critérios de Aceitação
 
-* Uma tela utilizando semantic-ui ou twitter bootstrap para aparência.
-* Utilizar Ajax para obter os repositórios
-* A busca não precisa estar perfeita. Se buscar pela tag `java` e retornar repositório contendo `javascript`, não tem problema.
+* A busca precisa consultar o back-end
+
+## Instruções
+
+1. Crie um arquivo `README.md` descrevendo como configurar o projeto, contendo os comandos que devem ser executados para rodar o software e os testes;
+2. Crie um ZIP do projeto sem as dependências instaladas e sem o diretório .git;
+3. Envie por email o ZIP criado.
 
 ## Considerações Finais
 
