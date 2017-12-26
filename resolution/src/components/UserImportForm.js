@@ -1,6 +1,5 @@
 import React from 'react';
-
-import withRouter from 'react-router';
+import Repositories from './Repositories';
 
 export default class UserImport extends React.Component {
     constructor(props) {
@@ -18,6 +17,23 @@ export default class UserImport extends React.Component {
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.username);
         event.preventDefault();
+
+        // ID do repositório, nome do repositório, descrição, URL HTTP e linguagem.
+
+        fetch(`https://api.github.com/users/${this.state.username}/starred?sort=updated&direction=desc`)
+            .then(response => response.json())
+            .then(repositories => {
+                return repositories.map(repository => {
+                    return { 
+                        id: repository.id,
+                        name: repository.name,
+                        description: repository.description,
+                        url: repository.url,
+                        language: repository.language
+                    }
+                })
+            })
+            .then(console.log)
     }
 
     render() {
