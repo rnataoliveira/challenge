@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import Header from './Header';
 import Repositories from './Repositories';
 
-export default class GitHubStars extends React.Component {
+export default class Stars extends React.Component {
     constructor() {
         super();
     }
