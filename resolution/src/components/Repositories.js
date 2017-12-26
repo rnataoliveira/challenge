@@ -9,7 +9,6 @@ export default class Repositories extends React.Component {
                     <td>rgb-color-game</td>
                     <td>Game, blabla blabla</td>
                     <td>https://github.com/rnataoliveira/rgb-color-game</td>
-                    <td>https</td>
                     <td>Javascript</td>
                     <td></td>
                     <td><a href="http://">Edit</a></td>
