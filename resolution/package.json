@@ -1,24 +1,35 @@
 {
-  "name": "challenge-GitHubStars",
-  "version": "0.0.0",
-  "description": "Provides a way to organize your repositories with tags",
+  "name": "github-stars-challenge",
+  "version": "0.0.1",
+  "description": "GitHub Stars challenge resolution",
   "main": "src/app.js",
   "dependencies": {
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
-    "babel-preset-stage-0": "^6.3.13",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "bootstrap": "^4.0.0-beta.2",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   },
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --history-api-fallback --content-base public"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "webpack-dev-server --inline --hot --history-api-fallback --content-base public"
   },
-  "author": "Vinicius Vinhas",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rnataoliveira/challenge.git"
+  },
+  "author": "Renata Oliveira <renatabels@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rnataoliveira/challenge/issues"
+  },
+  "homepage": "https://github.com/rnataoliveira/challenge#readme"
 }

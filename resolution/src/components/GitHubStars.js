@@ -12,15 +12,8 @@ export default class GitHubStars extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <NavBar />
-                </div>
-                <div>
-                    <Header />
-                </div>
-                <div>
-                    <Repositories />
-                </div>
+                <NavBar />
+                <Header />
             </div>
         );
     }

@@ -2,11 +2,11 @@ import React from 'react';
 
 import Repositories from './Repositories';
 
-export default class Header extends React.Component {
+export default  class Header extends React.Component {
     render() {
         return (
-            <div class="container">
-                <table class="table">
+            <div  className="container">
+                <table  className="table">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>

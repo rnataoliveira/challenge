@@ -1,35 +1,39 @@
-// Webpack configuration provided by LearnCode.academy (https://www.youtube.com/user/learncodeacademy)
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require('webpack')
 
 module.exports = {
-  context: path.join(__dirname, "src"),
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./app.js",
-  
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0']
-        }
-      }
+    entry: __dirname + '/src/app.js',
+    output: {
+        path: __dirname + '/public',
+        filename: 'app.min.js'
+    },
+    devServer: {
+        inline: true,
+        contentBase: __dirname + '/public',
+        port: 3333
+    },
+    module: {
+        loaders: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015', 'react']
+            }
+        },
+        {
+            test: /\.css$/,
+            use: [
+                'style-loader',
+                'css-loader'
+            ]
+        }]
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default']
+        })
     ]
-  },
-  
-  output: {
-    path: __dirname + "/public/js/",
-    publicPath: "/js/",
-    filename: "app.min.js"
-  },
-  
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-  ],
-};
+}
