@@ -1,7 +1,10 @@
 import React from 'react';
+import { browserHistory as history, withRouter } from 'react-router-dom';
+
 import Repositories from './Repositories';
 
-export default class UserImport extends React.Component {
+
+class UserImportForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { username: '' };
@@ -15,7 +18,6 @@ export default class UserImport extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.username);
         event.preventDefault();
 
         //Save: Repository ID, Name, description, URL HTTP e language;
@@ -32,7 +34,12 @@ export default class UserImport extends React.Component {
                     }
                 })
             })
-            .then(console.log)
+            .then(repositories => {
+                const username = this.state.username
+                const data = { stars: repositories }
+                localStorage.setItem(username, JSON.stringify(data))
+                this.props.history.push(`${this.state.username}/stars`)
+            })            
     }
 
     render() {
@@ -41,7 +48,7 @@ export default class UserImport extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className=" col input-group mb-2 mb-sm-0">
-                            <div className="input-group-addon">github.com/</div>
+                            <div className="input-group-addon">github.com/{this.state.username}</div>
                             <input type="text" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
                         </div>
                         <div className="col">
@@ -53,3 +60,5 @@ export default class UserImport extends React.Component {
         );
     }
 }
+
+export default withRouter(UserImportForm);

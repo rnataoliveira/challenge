@@ -14,6 +14,7 @@ export default class Stars extends React.Component {
             <div>
                 <NavBar />
                 <Header />
+                <Repositories />
             </div>
         );
     }
