@@ -10,7 +10,6 @@ export default class UserImport extends React.Component {
                 <NavBar />
                 <UserImportForm />
             </div>
-            
         );
     }
 }

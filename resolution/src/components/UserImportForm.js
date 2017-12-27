@@ -18,8 +18,7 @@ export default class UserImport extends React.Component {
         alert('A name was submitted: ' + this.state.username);
         event.preventDefault();
 
-        // ID do repositório, nome do repositório, descrição, URL HTTP e linguagem.
-
+        //Save: Repository ID, Name, description, URL HTTP e language;
         fetch(`https://api.github.com/users/${this.state.username}/starred?sort=updated&direction=desc`)
             .then(response => response.json())
             .then(repositories => {
