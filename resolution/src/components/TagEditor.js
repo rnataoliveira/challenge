@@ -10,7 +10,7 @@ class TagEditor extends React.Component {
     componentDidMount() {
         // Find entire repository
         // Using this.props.username and this.props.repository
-        // 
+        // Save data from the tag input in the localstorage
     }
 
     render() {
