@@ -6,19 +6,19 @@ import Repositories from './Repositories';
 
 class UserImportForm extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = { username: '' };
+        super(props)
+        this.state = { username: '' }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange(event) {
-        this.setState({ username: event.target.value});
+        this.setState({ username: event.target.value})
     }
 
     handleSubmit(event) {
-        event.preventDefault();
+        event.preventDefault()
 
         //Save: Repository ID, Name, description, URL HTTP e language;
         fetch(`https://api.github.com/users/${this.state.username}/starred?sort=updated&direction=desc`)
@@ -61,4 +61,4 @@ class UserImportForm extends React.Component {
     }
 }
 
-export default withRouter(UserImportForm);
+export default withRouter(UserImportForm)

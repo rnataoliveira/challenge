@@ -6,7 +6,7 @@ import Repositories from './Repositories';
 
 export default class Stars extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         console.log(this.props)
     }
 
