@@ -25,8 +25,8 @@ export default class Repositories extends React.Component {
                     <td>{repository.description}</td>
                     <td>{repository.url}</td>
                     <td>{repository.language}</td>
-                    <td>tags</td>
-                    <td>link</td>
+                    <td>Tags</td>
+                    <td></td>
                 </tr>
             )
         })
