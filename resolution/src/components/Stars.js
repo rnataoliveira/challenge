@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import NavBar from './NavBar';
-import Header from './Header';
-import Repositories from './Repositories';
+import NavBar from './NavBar'
+import Header from './Header'
+import Repositories from './Repositories'
 
 export default class Stars extends React.Component {
     constructor(props) {

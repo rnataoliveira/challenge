@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import Header from './Header';
+import Header from './Header'
 
 export default class Repositories extends React.Component {
     constructor(props) {

@@ -1,9 +1,9 @@
-import React from 'react';
-import Router from 'react-router';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from 'react'
+import Router from 'react-router'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import UserImport from './UserImport';
-import Stars from './Stars';
+import UserImport from './UserImport'
+import Stars from './Stars'
 
 export default class App extends React.Component {
     render() {

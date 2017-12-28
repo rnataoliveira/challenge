@@ -1,7 +1,7 @@
-import React from 'react';
-import { browserHistory as history, withRouter } from 'react-router-dom';
+import React from 'react'
+import { browserHistory as history, withRouter } from 'react-router-dom'
 
-import Repositories from './Repositories';
+import Repositories from './Repositories'
 
 
 class UserImportForm extends React.Component {
