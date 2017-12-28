@@ -44,19 +44,19 @@ class UserImportForm extends React.Component {
 
     render() {
         return (
-            <form className="container mt-5" onSubmit={this.handleSubmit}>
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className=" col input-group mb-2 mb-sm-0">
-                            <div className="input-group-addon">github.com/{this.state.username}</div>
-                            <input type="text" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
+            <div className="container">
+                <div className="row justify-content-md-center mt-5">
+                    <form className="form-inline" onSubmit={this.handleSubmit}>
+                        <div className="form-group input-group col-lg-10 col-md-10 col-sm-10">
+                            <div className="col-12 input-group mb-sm-0">
+                                <div className="input-group-addon">github.com/</div>
+                                <input type="text" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
+                            </div>
                         </div>
-                        <div className="col">
-                            <button type="submit" className="btn btn-outline-primary mt-2">Get Repositories</button>
-                        </div>
-                    </div>
+                        <button type="submit" className="btn btn-outline-primary">Get Repositories</button>
+                    </form>
                 </div>
-            </form>
+            </div>
         );
     }
 }
