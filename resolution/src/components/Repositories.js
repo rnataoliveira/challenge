@@ -1,19 +1,42 @@
 import React from 'react';
 
+import Header from './Header'
+
 export default class Repositories extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { repositories: [] }
+    }
+
+    componentDidMount() {
+        const username = this.props.username
+        const { stars } = JSON.parse(localStorage.getItem(username))
+        this.setState({
+            repositories: stars
+        })
+    }
+
     render() {
-        return (
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>rgb-color-game</td>
-                    <td>Game, blabla blabla</td>
-                    <td>https://github.com/rnataoliveira/rgb-color-game</td>
-                    <td>Javascript</td>
-                    <td></td>
-                    <td><a href="http://">Edit</a></td>
+        const rows = this.state.repositories.map(repository => {
+            return (
+                <tr key={repository.id}>
+                    <td>{repository.id}</td>
+                    <td>{repository.name}</td>
+                    <td>{repository.description}</td>
+                    <td>{repository.url}</td>
+                    <td>{repository.language}</td>
+                    <td>tags</td>
+                    <td>link</td>
                 </tr>
-            </tbody>
+            )
+        })
+        return (
+            <table  className="table">
+                <Header />
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
         );
     }
 }

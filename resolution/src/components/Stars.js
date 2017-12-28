@@ -5,16 +5,18 @@ import Header from './Header';
 import Repositories from './Repositories';
 
 export default class Stars extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(this.props)
     }
 
     render() {
         return (
             <div>
                 <NavBar />
-                <Header />
-                <Repositories />
+                <div className='container'>
+                    <Repositories username={this.props.match.params.username} />
+                </div>
             </div>
         );
     }
