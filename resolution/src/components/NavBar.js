@@ -9,9 +9,7 @@ export default class NavBar extends React.Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container">
-                        <Link to="/">
-                            <a className="navbar-brand" href="#">GitHub Stars</a>
-                        </Link>
+                        <Link to="/" className="navbar-brand">GitHub Stars</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
