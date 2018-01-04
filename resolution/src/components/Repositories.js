@@ -2,10 +2,13 @@ import React from 'react'
 
 import Header from './Header'
 
+import EditButton from './EditButton'
+
 export default class Repositories extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { repositories: [] }
+          this.state = { repositories: [] }
+
     }
 
     componentDidMount() {
@@ -26,7 +29,10 @@ export default class Repositories extends React.Component {
                     <td>{repository.url}</td>
                     <td>{repository.language}</td>
                     <td>Tags</td>
-                    <td></td>
+                    <td>
+                        <EditButton username={this.props.username}
+                                    repo={repository.name}  />
+                    </td>
                 </tr>
             )
         })
