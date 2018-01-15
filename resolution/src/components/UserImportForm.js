@@ -21,6 +21,8 @@ class UserImportForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
+        this.props.dispatch(importStars(this.state.username))
+        this.props.history.push(`${this.stars.username}/stars`)
         //Save: Repository ID, Name, description, URL HTTP e language;
         // fetch(`https://api.github.com/users/${this.state.username}/starred?sort=updated&direction=desc`)
         //     .then(response => response.json())
@@ -41,8 +43,6 @@ class UserImportForm extends React.Component {
         //         localStorage.setItem(username, JSON.stringify(data))
         //         this.props.history.push(`${this.state.username}/stars`)
         //     })
-            this.props.dispatch(importStars(this.state.stars))
-            this.setState({ stars: [] })
     }
 
     render() {
