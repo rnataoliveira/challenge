@@ -3,3 +3,8 @@ export const setTags = (id, tags) => ({
     tags,
     id
 })
+
+export const importStars = username => ({
+    type: 'IMPORT_STARS',
+    username
+})

@@ -6,6 +6,7 @@ const tags = (state = [], action) => {
     case 'SET_TAGS':
       return [
         ...state,
+        ...action.state,
         {
           id: action.id,
           tags: action.tags

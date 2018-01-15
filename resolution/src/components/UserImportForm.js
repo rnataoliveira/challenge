@@ -1,7 +1,9 @@
 import React from 'react'
 import { browserHistory as history, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Repositories from './Repositories'
+import { importStars } from '../actions'
 
 
 class UserImportForm extends React.Component {
@@ -19,27 +21,28 @@ class UserImportForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
-
         //Save: Repository ID, Name, description, URL HTTP e language;
-        fetch(`https://api.github.com/users/${this.state.username}/starred?sort=updated&direction=desc`)
-            .then(response => response.json())
-            .then(repositories => {
-                return repositories.map(repository => {
-                    return { 
-                        id: repository.id,
-                        name: repository.name,
-                        description: repository.description,
-                        url: repository.url,
-                        language: repository.language
-                    }
-                })
-            })
-            .then(repositories => {
-                const username = this.state.username
-                const data = { stars: repositories }
-                localStorage.setItem(username, JSON.stringify(data))
-                this.props.history.push(`${this.state.username}/stars`)
-            })            
+        // fetch(`https://api.github.com/users/${this.state.username}/starred?sort=updated&direction=desc`)
+        //     .then(response => response.json())
+        //     .then(repositories => {
+        //         return repositories.map(repository => {
+        //             return { 
+        //                 id: repository.id,
+        //                 name: repository.name,
+        //                 description: repository.description,
+        //                 url: repository.url,
+        //                 language: repository.language
+        //             }
+        //         })
+        //     })
+        //     .then(repositories => {
+        //         const username = this.state.username
+        //         const data = { stars: repositories }
+        //         localStorage.setItem(username, JSON.stringify(data))
+        //         this.props.history.push(`${this.state.username}/stars`)
+        //     })
+            this.props.dispatch(importStars(this.state.stars))
+            this.setState({ stars: [] })
     }
 
     render() {
@@ -61,4 +64,5 @@ class UserImportForm extends React.Component {
     }
 }
 
-export default withRouter(UserImportForm)
+// export default withRouter(UserImportForm)
+export default connect()(UserImportForm)
