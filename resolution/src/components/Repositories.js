@@ -1,8 +1,8 @@
 import React from 'react'
 
 import Header from './Header'
-
 import EditButton from './EditButton'
+import SetTags from './SetTags'
 
 export default class Repositories extends React.Component {
     constructor(props) {
@@ -28,7 +28,9 @@ export default class Repositories extends React.Component {
                     <td>{repository.description}</td>
                     <td>{repository.url}</td>
                     <td>{repository.language}</td>
-                    <td>Tags</td>
+                    <td>
+                        <SetTags />
+                    </td>
                     <td>
                         <EditButton username={this.props.username}
                                     repo={repository.name}  />

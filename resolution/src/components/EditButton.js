@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TagEditor from './TagEditor'
+import SetTags from './SetTags'
 import Repositories from './Repositories'
 
 export default class EditButton extends React.Component {
