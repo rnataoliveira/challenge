@@ -1,22 +1,50 @@
 import { combineReducers } from 'redux'
-import Repositories from '../components/Repositories';
 
 const tags = (state = [], action) => {
   switch (action.type) {
     case 'SET_TAGS':
-      return [
-        ...state,
-        ...action.state,
-        {
-          id: action.id,
-          tags: action.tags
-        }
-      ]
+      return state.map(repository => {
+        if(repository.id === action.id)
+          return { ...repository, tags: action.tags }
+        return repository
+      })
       break
+    case 'IMPORT_STARS':
+      return 
+        fetch(`https://api.github.com/users/${action.username}/starred?sort=updated&direction=desc`, { method: 'GET '})
+        .then(response => Promise.all([response, response.json()]))
+        .then(repositories => {
+          return repositories.map(repository => {
+            return {
+              id: repository.id,
+                name: repository.full_name,
+                description: repository.description,
+                url: repository.url,
+                language: repository.language,
+                tags: []
+            }
+          })
+        })
+      break
+    case 'SEARCH_TAG':
+      return
+    default:
+      return state;
+    }
+  }
+
+const stars = (state = null, action) => {
+  switch(action.type) {
+    case 'FETCH_STARS_HAS_ERRORED':
+      return action.hasErrored
+    case 'FETCH_STARS_IS_LOADING':
+      return action.isLoading
+    case 'FETCH_STARS_SUCCESS':
+      return action.stars
     default:
       return state
-      break
   }
 }
 
-export default combineReducers({ tags })
+export default combineReducers({ tags, stars })
+

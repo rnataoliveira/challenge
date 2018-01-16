@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import NavBar from './NavBar'
 import Header from './Header'
 import Repositories from './Repositories'
 
-export default class Stars extends React.Component {
-    constructor(props) {
-        super(props)
-        console.log(this.props)
+export default class Stars extends Component {
+    componentDidMount() {
+        this.props.fetchStars()
     }
 
     render() {

@@ -34,3 +34,4 @@
 // )(SetTags)
 
 // export default starsFilter
+// connect(mapStateToProps, {fetchPostsWithRedux})(App);
