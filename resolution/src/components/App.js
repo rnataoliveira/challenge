@@ -1,19 +1,21 @@
-import React from 'react'
-import Router from 'react-router'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
+
+import NavBar from './NavBar'
 
 import UserImportContainer from './UserImportContainer'
 import Stars from './Stars'
 
-export default class App extends React.Component {
+export default class App extends Component {
     render() {
         return ( 
-            <BrowserRouter>
+            <div>
+                <NavBar />
                 <Switch>
                     <Route exact path="/" component={UserImportContainer}/>
-                    <Route exact path="/:username/stars" component={Stars}/>
+                    <Route path="/:username/stars" component={Stars}/>
                 </Switch>
-            </BrowserRouter>
-        );
+            </div>
+        )
     }
 }

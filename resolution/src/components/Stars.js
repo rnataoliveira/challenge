@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import NavBar from './NavBar'
-import Header from './Header'
 import Repositories from './Repositories'
 
 export default class Stars extends Component {
@@ -11,11 +9,8 @@ export default class Stars extends Component {
 
     render() {
         return (
-            <div>
-                <NavBar />
-                <div className='container'>
-                    <Repositories username={this.props.match.params.username} />
-                </div>
+            <div className='container'>
+                <Repositories username={this.props.match.params.username} />
             </div>
         );
     }

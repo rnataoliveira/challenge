@@ -25,13 +25,6 @@ class UserImport extends Component {
     }
 
     render() {
-        const layout = body => (
-            <div>
-                <NavBar />
-                {body}
-            </div>
-        )
-
         if(this.props.isLoading)
             return layout(<p>Loading stars...</p>)
 
@@ -42,22 +35,20 @@ class UserImport extends Component {
             return <p>Redirect</p>
 
         return (
-            layout(
-                <div className="container">
-                    <div className="row justify-content-md-center mt-5">
-                        <form className="form-inline" onSubmit={this.handleSubmit}>
-                            <div className="form-group input-group col-lg-10 col-md-10 col-sm-10">
-                                <div className="col-12 input-group mb-sm-0">
-                                    <div className="input-group-addon">github.com/</div>
-                                    <input type="text" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
-                                </div>
+            <div className="container">
+                <div className="row justify-content-md-center mt-5">
+                    <form className="form-inline" onSubmit={this.handleSubmit}>
+                        <div className="form-group input-group col-lg-10 col-md-10 col-sm-10">
+                            <div className="col-12 input-group mb-sm-0">
+                                <div className="input-group-addon">github.com/</div>
+                                <input type="text" className="form-control" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
                             </div>
-                            <button type="submit" className="btn btn-outline-primary">Get Repositories</button>
-                        </form>
-                    </div>
+                        </div>
+                        <button type="submit" className="btn btn-outline-primary">Get Repositories</button>
+                    </form>
                 </div>
-            )
-        );
+            </div>
+        )
     }
 }
 

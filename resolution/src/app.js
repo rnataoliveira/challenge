@@ -1,22 +1,29 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import App from './components/App';
-
-import registerServiceWorker from './registerServiceWorker'
+import React from 'react'
+import { Route, Link } from 'react-router-dom'
+import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import reducer from './reducers'
+import { ConnectedRouter } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
+import registerServiceWorker from './registerServiceWorker'
 
-const store = createStore(reducer, {}, applyMiddleware(thunk))
+import store from './store'
 
-ReactDOM.render(
-    <Provider store={store}>
+//Components
+import App from './components/App';
+
+const history = createHistory()
+
+const router = (
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
       <App />
-    </Provider>, 
-    document.getElementById('app'))
-  
-  registerServiceWorker()
+    </ConnectedRouter>
+  </Provider>
+)
+
+render(router, document.getElementById('app'))
+registerServiceWorker()
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
