@@ -1,9 +1,10 @@
 import NavBar from './NavBar';
+import { fetchStars, changeRoute } from '../actions'
 
+// import { push } from 'react-router-redux'
 import React, { Component } from 'react'
-import { browserHistory as history, withRouter } from 'react-router-dom'
+// import { browserHistory as history, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchStars } from '../actions'
 
 class UserImport extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class UserImport extends Component {
             return layout(<p>Error</p>)
 
         if(this.props.stars)
-            return layout(<p>Redirect to /stars</p>)
+            return <p>Redirect</p>
 
         return (
             layout(

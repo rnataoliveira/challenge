@@ -1,9 +1,3 @@
-export const setTags = (id, tags) => ({
-    type: 'SET_TAGS',
-    tags: tags.target.value,
-    id
-})
-
 export const fetchStarsHasErrored = errored => ({
     type: 'FETCH_STARS_HAS_ERRORED',
     hasErrored: errored
@@ -39,9 +33,28 @@ export const fetchStars = url => {
     }
 }
 
+// export const changeRoute = path => ({
+//      type: 'CHANGE_ROUTE', 
+//      path 
+// })
+
+export const setTags = (id, tags) => ({
+    type: 'SET_TAGS',
+    tags: tags.target.value,
+    id
+})
+
 export const searchTag = (q) => {
     return {
         type: 'SEARCH_TAG',
         q
+    }
+}
+
+// Implement
+export const saveTags = parametro => {
+    return dispatch => {
+        // save the tags in the storage??
+            
     }
 }

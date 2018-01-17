@@ -1,4 +1,9 @@
 import { combineReducers } from 'redux'
+// import { push } from 'react-router-redux'
+
+// const redirect = (path) => {
+//   dispatch(push(path))
+// }
 
 const tags = (state = [], action) => {
   switch (action.type) {
@@ -8,7 +13,15 @@ const tags = (state = [], action) => {
           return { ...repository, tags: action.tags }
         return repository
       })
-      break
+    case 'SEARCH_TAG':
+      return
+    default:
+      return state;
+  }
+}
+
+const stars = (state = null, action) => {
+  switch(action.type) {
     case 'IMPORT_STARS':
       return 
         fetch(`https://api.github.com/users/${action.username}/starred?sort=updated&direction=desc`, { method: 'GET '})
@@ -25,22 +38,15 @@ const tags = (state = [], action) => {
             }
           })
         })
-      break
-    case 'SEARCH_TAG':
-      return
-    default:
-      return state;
-    }
-  }
-
-const stars = (state = null, action) => {
-  switch(action.type) {
     case 'FETCH_STARS_HAS_ERRORED':
       return action.hasErrored
     case 'FETCH_STARS_IS_LOADING':
       return action.isLoading
     case 'FETCH_STARS_SUCCESS':
       return action.stars
+        // .then(redirect(`${action.username}/stars`))
+ // case 'CHANGE_ROUTE':
+//   return 
     default:
       return state
   }

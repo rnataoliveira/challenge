@@ -5,7 +5,8 @@ import UserImport from './UserImport'
 const mapStateToProps = state => ({
     stars: state.stars,
     hasErrored: state.starsHasErrored,
-    isLoading: state.starsIsLoading
+    isLoading: state.starsIsLoading,
+    // path: state.path
 })
 
 const mapDispatchToProps = dispatch => ({
