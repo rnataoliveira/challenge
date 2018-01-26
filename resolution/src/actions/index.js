@@ -1,60 +1,27 @@
-export const fetchStarsHasErrored = errored => ({
-    type: 'FETCH_STARS_HAS_ERRORED',
-    hasErrored: errored
+import { push } from 'react-router-redux'
+
+export const requestUserStars = username => ({ type: 'REQUEST_USER_STARS', username })
+
+export const receiveUserStars = (username, stars) => ({
+  type: 'RECEIVE_USER_STARS',
+  username,
+  stars: stars.map(repo => ({
+    id: repo.id,
+    name: repo.full_name,
+    description: repo.description,
+    url: repo.url,
+    language: repo.language,
+    tags: []
+  }))
 })
 
-export const fetchStarsIsLoading = loading => ({
-    type: 'FETCH_STARS_IS_LOADING',
-    isLoading: loading
-})
+export const fetchUserStars = username => dispatch => {
+  // First dispatch: the app state is updated to inform
+  // that the API call is starting.
+  dispatch(requestUserStars(username))
 
-export const fetchStarsSuccess = stars => ({
-    type: 'FETCH_STARS_SUCCESS',
-    stars
-})
-
-export const fetchStars = url => {
-    return dispatch => {
-        dispatch(fetchStarsIsLoading(true))
-
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw Error(response.statusText)
-                }
-                dispatch(fetchStarsIsLoading(false))
-
-                return response
-            })
-            .then(response => response.json())
-            .then(stars => dispatch(fetchStarsSuccess(stars)))
-            .catch(() => dispatch(fetchStarsHasErrored(true)))
-            
-    }
-}
-
-// export const changeRoute = path => ({
-//      type: 'CHANGE_ROUTE', 
-//      path 
-// })
-
-export const setTags = (id, tags) => ({
-    type: 'SET_TAGS',
-    tags: tags.target.value,
-    id
-})
-
-export const searchTag = (q) => {
-    return {
-        type: 'SEARCH_TAG',
-        q
-    }
-}
-
-// Implement
-export const saveTags = parametro => {
-    return dispatch => {
-        // save the tags in the storage??
-            
-    }
+  fetch(`https://api.github.com/users/${username}/starred?sort=updated&direction=desc`)
+    .then(response => response.json())
+    .then(json => dispatch(receiveUserStars(username, json)))
+    .then(_ => dispatch(push(`${username}/stars`)))
 }
