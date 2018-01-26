@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Stars = ({ repos = [] }) => (
+import EditButton from './EditButton'
+
+const Stars = ({ repos = [], username }) => (
   <div className="container">
     <table className="mt-5">
       <thead>
@@ -24,7 +26,7 @@ const Stars = ({ repos = [] }) => (
             <td>{repo.url}</td>
             <td>{repo.language}</td>
             <td>{repo.tags}</td>
-            <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#tagEditor" onClick={this.handleShowModal}>Edit</button></td> 
+            <td><EditButton repo={repo.name} username={username}/></td> 
           </tr>
         ))}
       </tbody>
