@@ -17,4 +17,17 @@ const stars = (state = [], action) => {
   }
 }
 
-export default combineReducers({ stars })
+const tags = (state = {}, action) => {
+  switch (action.type) {
+    case 'OPEN_TAGS_MODAL':
+      break
+    case 'SET_TAGS':
+      console.log(state)
+      console.log(action)
+      return state
+    default:
+      return state
+  }
+}
+
+export default combineReducers({ stars, tags })

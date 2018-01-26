@@ -26,15 +26,12 @@ const Stars = ({ repos = [], username }) => (
             <td>{repo.url}</td>
             <td>{repo.language}</td>
             <td>{repo.tags}</td>
-            <td><EditButton repo={repo.name} username={username}/></td> 
+            <td><EditButton username={username} repo={repo.name} tags={repo.tags} /></td> 
           </tr>
         ))}
       </tbody>
     </table>
-    </div>
-  // <ul>
-  //   {repos.map(repo => <li key={repo.id}>{repo.name}</li>)}
-  // </ul>
+  </div>
 )
 
 const mapStateToProps = (state, props) => {
@@ -45,6 +42,6 @@ const mapStateToProps = (state, props) => {
   return { ...props, ...userStars }
 }
 
-const mapDispatchToProps = dispatch => ({ })
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stars)

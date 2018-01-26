@@ -25,3 +25,10 @@ export const fetchUserStars = username => dispatch => {
     .then(json => dispatch(receiveUserStars(username, json)))
     .then(_ => dispatch(push(`${username}/stars`)))
 }
+
+export const setTags = (username, repo, tags) => ({
+  type: 'SET_TAGS',
+  username,
+  repo,
+  tags
+})
