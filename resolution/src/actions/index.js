@@ -26,9 +26,14 @@ export const fetchUserStars = username => dispatch => {
     .then(_ => dispatch(push(`${username}/stars`)))
 }
 
-export const setTags = (username, repo, tags) => ({
+export const setTags = (username, repoId, tags) => ({
   type: 'SET_TAGS',
   username,
-  repo,
+  repoId,
   tags
 })
+
+export const saveTags = (username, repoId, tags) => dispatch => {
+  dispatch(setTags(username, repoId, tags))
+  dispatch(push(`/${username}/stars`))
+}

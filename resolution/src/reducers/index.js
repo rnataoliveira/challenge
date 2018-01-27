@@ -12,6 +12,21 @@ const stars = (state = [], action) => {
           return { username: action.username, repos: action.stars }
         return userStars
       })
+    case 'SET_TAGS':
+      const { username, repoId, tags } = action
+      return state.map(star => {
+        if(star.username === username)
+        {
+          const setTags = () => star.repos.map(repo => {
+            return repo.id == repoId ? { ...repo, tags: tags } : repo
+          })
+
+          const result = { username: star.username, repos: setTags() }
+          console.log(result)
+          return result
+        }
+        return star
+      })
     default:
       return state
   }
@@ -19,12 +34,6 @@ const stars = (state = [], action) => {
 
 const tags = (state = {}, action) => {
   switch (action.type) {
-    case 'OPEN_TAGS_MODAL':
-      break
-    case 'SET_TAGS':
-      console.log(state)
-      console.log(action)
-      return state
     default:
       return state
   }

@@ -1,24 +1,27 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, BrowserRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import { saveTags } from '../actions'
 
 class Modal extends Component {
   constructor(props) {
     super(props)
-    this.state = { tags: props.tags }
+    this.state = { tags: props.tags || [] }
   }
 
   componentDidMount() {
     $(ReactDOM.findDOMNode(this)).modal('show')
-    $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', this.props.handleHideModal)
+    const closeModal = () => this.props.closeModalTags(this.props.username)
+    $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', closeModal)
   }
 
   handleSubmit(event) {
     event.preventDefault()
     const tags = [...new Set(this.state.tags)]
-    this.props.setTags(this.props.username, this.props.repo, tags)
+    this.props.saveTags(this.props.username, this.props.repoId, tags)
   }
 
   handleChange(event) {
@@ -29,14 +32,12 @@ class Modal extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path={(`${this.props.location.pathname}/${this.props.repo}`)}>
           <div className="modal fade" id="tagEditor" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="modal-dialog" role="document">
                   <div className="modal-content">
                       <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Edit tags for: {this.props.repo}</h5>
+                        <h5 className="modal-title" id="exampleModalLabel">Edit tags for: {this.props.repoName}</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -46,22 +47,30 @@ class Modal extends Component {
                       </div>
                       <div className="modal-footer">
                           <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" className="btn btn-primary">Save</button>
+                          <button type="submit" className="btn btn-primary" >Save</button>
                       </div>
                   </div>
               </div>
             </form>            
           </div>
-        </Route>
-      </Switch>
     )
   }
 }
 
-
 const mapStateToProps = (state, props) => {
-  const { router } = state
-  return { ...props, ...router }
+  const { match: { params: { username, repoId } } } = props
+  const { root: { stars } } = state
+
+  const userStars = stars.filter(star => star.username === username)[0]
+  const userRepo = userStars && userStars.repos.filter(repo => repo.id === Number(repoId))[0]
+  const currentTags = userRepo && userRepo.tags || []
+  const repo = userRepo && userRepo.name
+  return { username, repoId, tags: currentTags, repoName: repo }
 }
 
-export default connect(mapStateToProps)(Modal)
+const mapDispatchToProps = dispatch => ({
+  closeModalTags: username => dispatch(push(`/${username}/stars`)),
+  saveTags: (username, repoId, tags) => dispatch(saveTags(username, repoId, tags))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal)

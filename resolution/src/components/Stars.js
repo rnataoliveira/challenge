@@ -1,10 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Route } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import EditButton from './EditButton'
+import Modal from './Modal'
 
 const Stars = ({ repos = [], username }) => (
   <div className="container">
+    <Route path="/:username/stars/:repoId" component={Modal} />
     <table className="mt-5">
       <thead>
           <tr>
@@ -26,7 +30,9 @@ const Stars = ({ repos = [], username }) => (
             <td>{repo.url}</td>
             <td>{repo.language}</td>
             <td>{repo.tags}</td>
-            <td><EditButton username={username} repo={repo.name} tags={repo.tags} /></td> 
+            <td>
+              <Link className="btn btn-primary" to={(`/${username}/stars/${repo.id}`)}>Edit</Link>
+            </td>
           </tr>
         ))}
       </tbody>
