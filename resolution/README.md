@@ -14,7 +14,6 @@
  ```
  
  ## Start
- ----
  ``` 
  npm run start
  ```
