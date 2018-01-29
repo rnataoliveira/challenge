@@ -37,3 +37,14 @@ export const saveTags = (username, repoId, tags) => dispatch => {
   dispatch(setTags(username, repoId, tags))
   dispatch(push(`/${username}/stars`))
 }
+
+export const filterTags = (username, q) => dispatch => {
+  dispatch(applyTagFilter(username, q))
+  dispatch(push(`/${username}/stars?q=${q}`))
+}
+
+export const applyTagFilter = (username, q) => ({
+  type: 'APPLY_TAG_FILTER',
+  username,
+  q
+})

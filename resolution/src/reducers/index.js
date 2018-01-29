@@ -18,25 +18,21 @@ const stars = (state = [], action) => {
         if(star.username === username)
         {
           const setTags = () => star.repos.map(repo => {
-            return repo.id == repoId ? { ...repo, tags: tags } : repo
+            return repo.id === Number(repoId) ? { ...repo, tags: tags } : repo
           })
-
-          const result = { username: star.username, repos: setTags() }
-          console.log(result)
-          return result
+          return { username: star.username, repos: setTags() }
         }
         return star
       })
+    // case 'APPLY_TAG_FILTER':
+    //   return state.map(star => {
+    //     if(star.username === action.username)
+    //       return { ...star, repos: star.repos.filter(repo => repo.tags.some(tag => tag === action.q)) }
+    //     return star
+    //   })
     default:
       return state
   }
 }
 
-const tags = (state = {}, action) => {
-  switch (action.type) {
-    default:
-      return state
-  }
-}
-
-export default combineReducers({ stars, tags })
+export default combineReducers({ stars })

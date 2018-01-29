@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
-import { Route, Switch, BrowserRouter, Link } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { saveTags } from '../actions'
@@ -47,7 +47,7 @@ class Modal extends Component {
                       </div>
                       <div className="modal-footer">
                           <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" className="btn btn-primary" >Save</button>
+                          <button type="submit" className="btn btn-primary" ref="fade">Save</button>
                       </div>
                   </div>
               </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
 import { fetchUserStars } from '../actions'
 
 class UserImport extends Component {

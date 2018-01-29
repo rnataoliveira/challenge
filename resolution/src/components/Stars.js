@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import { Route } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import EditButton from './EditButton'
 import Modal from './Modal'
+
+const queryString = require('query-string')
 
 const Stars = ({ repos = [], username }) => (
   <div className="container">
@@ -42,10 +43,17 @@ const Stars = ({ repos = [], username }) => (
 
 const mapStateToProps = (state, props) => {
   const { root: { stars } } = state
-  const { match: { params: { username } } } = props
+  const { match: { params: { username } }, location: { search = '?' } } = props
   
-  const userStars = stars.filter(star => star.username === username)[0] || {}
-  return { ...props, ...userStars }
+  let userStars = stars.filter(star => star.username === username)[0] || {}
+
+  const query = queryString.parse(search)
+  const { q } = query
+  
+  if(q)
+    userStars = { username, repos: userStars.repos.filter(repo => repo.tags.some(tag => tag === q)) }
+
+  return { ...props, ...userStars, ...query}
 }
 
 const mapDispatchToProps = dispatch => ({})
