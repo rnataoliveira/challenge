@@ -5,8 +5,6 @@ import { filterTags } from '../actions'
 
 const queryString = require('query-string')
 
-// import SearchInput, {createFilter} from 'react-search-input'
-
 class SearchForm extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +33,6 @@ class SearchForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-    console.log(state)
     const { router: { location: { search = '?', pathname } } } = state
     const query = queryString.parse(search)
     const { q  } = query

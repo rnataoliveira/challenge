@@ -22,6 +22,7 @@ class Modal extends Component {
     event.preventDefault()
     const tags = [...new Set(this.state.tags)]
     this.props.saveTags(this.props.username, this.props.repoId, tags)
+    $(ReactDOM.findDOMNode(this)).modal('hide')
   }
 
   handleChange(event) {
@@ -32,27 +33,27 @@ class Modal extends Component {
 
   render() {
     return (
-          <div className="modal fade" id="tagEditor" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <div className="modal-dialog" role="document">
-                  <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Edit tags for: {this.props.repoName}</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div className="modal-body">
-                          <input type="text" className="form-control" value={this.state.tags.join(',')} onChange={this.handleChange.bind(this)} />
-                      </div>
-                      <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" className="btn btn-primary" ref="fade">Save</button>
-                      </div>
+      <div className="modal fade" id="tagEditor" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">Edit tags for: {this.props.repoName}</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                      <input type="text" className="form-control" value={this.state.tags.join(',')} onChange={this.handleChange.bind(this)} />
+                  </div>
+                  <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" className="btn btn-primary">Save</button>
                   </div>
               </div>
-            </form>            
           </div>
+        </form>            
+      </div>
     )
   }
 }

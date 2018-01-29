@@ -24,12 +24,6 @@ const stars = (state = [], action) => {
         }
         return star
       })
-    // case 'APPLY_TAG_FILTER':
-    //   return state.map(star => {
-    //     if(star.username === action.username)
-    //       return { ...star, repos: star.repos.filter(repo => repo.tags.some(tag => tag === action.q)) }
-    //     return star
-    //   })
     default:
       return state
   }
